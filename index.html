@@ -6,7 +6,31 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <div class="input-buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+    <div class="display-results">
+        
+    </div>
     <script>
+        let inputButtons = document.querySelector('.input-buttons');
+
+        inputButtons.addEventListener('click', (event) =>{
+            let target = event.target;
+            switch(target.id) {
+                case 'rock':
+                    console.log('rock');
+                    break;
+                case 'paper':
+                    console.log('paper');
+                    break;
+                case 'scissors':
+                    console.log('scissors');
+                    break;
+            }
+        })
         function getComputerChoice() {
             const choices = ['rock', 'paper', 'scissors'];
             const randomNumber = Math.floor(Math.random() * 3);
