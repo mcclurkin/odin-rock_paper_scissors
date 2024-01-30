@@ -12,38 +12,26 @@
         <button id="scissors">Scissors</button>
     </div>
     <div class="display-results">
-
     </div>
-
     <script>
         const inputButtons = document.querySelector('.input-buttons');
         const results = document.querySelector('.display-results');
         let cpuScore = 0;
         let playerScore = 0;
+        let roundNumber = 0;
         inputButtons.addEventListener('click', (event) =>{
             let target = event.target;
+            roundNumber++;
             const para = document.createElement('p');
             const scores = document.createElement('p');
+            const round = document.createElement('p');
+            round.textContent = `Round Number: ${roundNumber}`;
             para.textContent = playRound(target.id);
-            results.appendChild(para);
-            results.appendChild(scores);
+            results.prepend(para);
+            results.prepend(scores);
             scores.textContent = 'Your Score: ' + playerScore + '\nComputer Score: ' + cpuScore;
+            results.prepend(round);
             console.log(target.id);
-            // switch(target.id) {
-            //     case 'rock':
-            //         // const playerSelection = target.id;
-            //         let outcome = playRound(target.id);
-            //         para.textContent = outcome;
-            //         results.appendChild(para);
-            //         console.log('rock');
-            //         break;
-            //     case 'paper':
-            //         console.log('paper');
-            //         break;
-            //     case 'scissors':
-            //         console.log('scissors');
-            //         break;
-            // }
         })
         function getComputerChoice() {
             const choices = ['rock', 'paper', 'scissors'];
@@ -55,11 +43,10 @@
             const cpuSelect = document.createElement('p');
             const playerSelect = document.createElement('p');
             const computerSelection = getComputerChoice();
-            results.appendChild(playerSelect);
+            results.prepend(playerSelect);
             playerSelect.textContent = 'Player Selection: ' + playerSelection + '\n';
-            results.appendChild(cpuSelect);
+            results.prepend(cpuSelect);
             cpuSelect.textContent = 'Computer Selection: ' + computerSelection + '\n';
-            
             if (playerSelection === computerSelection) {
                 return 'It\'s a tie!';
             }
@@ -91,19 +78,6 @@
                 }
             }
         }
-        // console.log(getComputerChoice());
-
-        // function game(playerSelection) {
-
-        //         const computerSelection = getComputerChoice();
-                
-
-
-        //         console.log(playRound(playerSelection, computerSelection));
-        // }
-
-        // game();
-
     </script>
 </body>
 </html>
